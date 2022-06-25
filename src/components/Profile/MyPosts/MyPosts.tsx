@@ -6,10 +6,10 @@ import {findAllByDisplayValue} from "@testing-library/react";
 
 export const MyPosts = () => {
     return (
-        <div>
-            MY posts
+        <div className={s.postsBlock}>
+            <h3>MY posts</h3>
             <div>
-                <textarea></textarea>
+                <div><textarea></textarea></div>
                 <button> Add post</button>
             </div>
 
