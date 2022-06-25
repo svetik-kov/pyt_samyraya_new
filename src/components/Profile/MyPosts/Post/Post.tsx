@@ -3,7 +3,7 @@ import s from './Post.module.css'
 
 type PostPropsType={
     message:string
-    like:string
+    like:number
 }
 
 export const Post = (props:PostPropsType) => {
@@ -13,7 +13,7 @@ export const Post = (props:PostPropsType) => {
 
                     <img src={'https://shapka-youtube.ru/wp-content/uploads/2022/05/avatarka-kot-iz-tom-i-dzherri.jpg'}/>
                     {props.message}
-                    <div> {props.like}</div>
+                    <div> like: {props.like}</div>
                 </div>
 
     );
