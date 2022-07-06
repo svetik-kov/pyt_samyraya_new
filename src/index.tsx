@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import State from "./redux/State";
 
-let dialogsData = [
+/*let dialogsData = [
     {id: 1, name: 'Nina'},
     {id: 2, name: 'Natasha'},
     {id: 3, name: 'Tanya'},
@@ -26,14 +27,14 @@ let postsData = [
     {id: 1,message: 'Hi, how are you?',  likesCount: 14},
     {id: 2, message: 'It is my first post!!!', likesCount: 30},
     {id: 3, message: 'It is my second post!!!', likesCount: 130},
-]
+]*/
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App dialogs={dialogsData} messages={messagesData} posts={postsData} />
+    <App state={State} />
   </React.StrictMode>
 );
 

@@ -7,13 +7,15 @@ import {Profile} from "./components/Profile/Profile";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import s from "./components/Dialogs/Dialogs.module.css";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {RootStateType} from "./redux/State";
 
 type AppPropsType = {
-    dialogs: Array<DialogsDataType>
+  /*  dialogs: Array<DialogsDataType>
     messages:Array<MessageDataType>
-    posts: Array<postsDataProps>
+    posts: Array<postsDataProps>*/
+    state:RootStateType
 }
-export type DialogsDataType = {
+/*export type DialogsDataType = {
     id: number,
     name: string
 }
@@ -25,7 +27,7 @@ export type postsDataProps = {
     id: number
     message: string
     likesCount: number
-}
+}*/
 const App = ( props:AppPropsType) => {
 
     return (
@@ -37,8 +39,8 @@ const App = ( props:AppPropsType) => {
                 <div className='app-wrapper-content'>
 
                     <Routes>
-                        <Route path="/dialogs/*" element={<Dialogs dialogs={props.dialogs} messages={props.messages} />}/>
-                        <Route path="/profile/*" element={<Profile posts={props.posts}/>}/>
+                        <Route path="/dialogs/*" element={<Dialogs state={props.state}  />}/>
+                        <Route path="/profile/*" element={<Profile state={props.state}/>}/>
                     </Routes>
                 </div>
 
