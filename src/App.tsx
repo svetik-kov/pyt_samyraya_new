@@ -8,19 +8,27 @@ import {Dialogs} from "./components/Dialogs/Dialogs";
 import s from "./components/Dialogs/Dialogs.module.css";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-
-const  App=()=> {
+type AppPropsType = {
+    posts: Array<postsDataProps>
+}
+export type postsDataProps = {
+    id: number
+    message: string
+    likesCount: number
+}
+const App = ( props:AppPropsType) => {
+    debugger
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
                 <Navbar/>
-                {/* <Profile/>*/}
+
                 <div className='app-wrapper-content'>
-                   {/* <Dialogs/>*/}
+
                     <Routes>
                         <Route path="/dialogs/*" element={<Dialogs/>}/>
-                        <Route path="/profile" element={<Profile/>}/>
+                        <Route path="/profile/*" element={<Profile posts={props.posts}/>}/>
                     </Routes>
                 </div>
 
