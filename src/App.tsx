@@ -9,7 +9,17 @@ import s from "./components/Dialogs/Dialogs.module.css";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 type AppPropsType = {
+    dialogs: Array<DialogsDataType>
+    messages:Array<MessageDataType>
     posts: Array<postsDataProps>
+}
+export type DialogsDataType = {
+    id: number,
+    name: string
+}
+export type MessageDataType = {
+    id: number,
+    message: string
 }
 export type postsDataProps = {
     id: number
@@ -17,7 +27,7 @@ export type postsDataProps = {
     likesCount: number
 }
 const App = ( props:AppPropsType) => {
-    debugger
+
     return (
         <BrowserRouter>
             <div className="app-wrapper">
@@ -27,7 +37,7 @@ const App = ( props:AppPropsType) => {
                 <div className='app-wrapper-content'>
 
                     <Routes>
-                        <Route path="/dialogs/*" element={<Dialogs/>}/>
+                        <Route path="/dialogs/*" element={<Dialogs dialogs={props.dialogs} messages={props.messages} />}/>
                         <Route path="/profile/*" element={<Profile posts={props.posts}/>}/>
                     </Routes>
                 </div>

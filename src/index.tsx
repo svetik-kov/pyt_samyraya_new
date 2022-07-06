@@ -4,7 +4,23 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-
+let dialogsData = [
+    {id: 1, name: 'Nina'},
+    {id: 2, name: 'Natasha'},
+    {id: 3, name: 'Tanya'},
+    {id: 4, name: 'Sveta'},
+    {id: 5, name: 'Zlata'},
+    {id: 6, name: 'Ira'},
+    {id: 7, name: 'Marina'},
+    {id: 8, name: 'Yulya'},
+]
+let messagesData = [
+    {id: 1, message: 'Hello'},
+    {id: 2, message: 'How are you?'},
+    {id: 3, message: 'Hi!'},
+    {id: 4, message: 'Yo!'},
+    {id: 5, message: 'Yo!'},
+]
 
 let postsData = [
     {id: 1,message: 'Hi, how are you?',  likesCount: 14},
@@ -17,7 +33,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App posts={postsData} />
+    <App dialogs={dialogsData} messages={messagesData} posts={postsData} />
   </React.StrictMode>
 );
 
