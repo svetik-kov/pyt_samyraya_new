@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
 import {findAllByDisplayValue} from "@testing-library/react";
@@ -17,12 +17,21 @@ export const MyPosts = (props: MyPostsPropsType) => {
           {id: 3, message: 'It is my second post!!!', likesCount: 130},
       ]*/
     let postsElements = props.posts.ProfilePage.posts.map((p) => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>);
+let newPost=useRef<HTMLTextAreaElement>(null)
+  let addPost=()=>{
+    if (newPost.current!==null){
+         alert(newPost.current.value)
+    }
+
+  }
     return (
         <div className={s.postsBlock}>
             <h3>MY posts</h3>
             <div>
-                <div><textarea></textarea></div>
-                <button> Add post</button>
+                <div>
+                    <textarea ref={newPost}></textarea>
+                </div>
+                <button onClick={addPost}> Add post</button>
             </div>
 
             <div className={s.posts}>
