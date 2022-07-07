@@ -53,4 +53,14 @@ let State:RootStateType = {
     },
     Sidebar: {}
 }
+
+export  let addPost=(newMessage:string)=>{
+    debugger
+    let newPost={
+        id:4,
+        message: newMessage,
+        likesCount:0
+    }
+    State.ProfilePage.posts.push(newPost)
+}
  export default State

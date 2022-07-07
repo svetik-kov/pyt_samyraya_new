@@ -7,10 +7,11 @@ import {Profile} from "./components/Profile/Profile";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import s from "./components/Dialogs/Dialogs.module.css";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {RootStateType} from "./redux/State";
+import {addPost, RootStateType} from "./redux/State";
 
 type AppPropsType = {
     state:RootStateType
+    addPost:(newMessage:string)=>void
 }
 
 const App = ( props:AppPropsType) => {
@@ -25,7 +26,7 @@ const App = ( props:AppPropsType) => {
 
                     <Routes>
                         <Route path="/dialogs/*" element={<Dialogs messagePage={props.state.MessagePage} profilePage={props.state.ProfilePage} />}/>
-                        <Route path="/profile/*" element={<Profile postPage={props.state.ProfilePage}/>}/>
+                        <Route path="/profile/*" element={<Profile postPage={props.state.ProfilePage} addPost={props.addPost}/>}/>
                     </Routes>
                 </div>
 

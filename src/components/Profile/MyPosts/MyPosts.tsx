@@ -3,24 +3,22 @@ import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
 import {findAllByDisplayValue} from "@testing-library/react";
 /*import {postsDataProps} from "../../../App";*/
-import {ProfilePageType, RootStateType} from "../../../redux/State";
+import {addPost, ProfilePageType, RootStateType} from "../../../redux/State";
 
 type MyPostsPropsType = {
    /* posts: Array<postsDataProps>*/
     posts:ProfilePageType
+    addPost:(newMessage:string)=>void
 }
 
 export const MyPosts = (props: MyPostsPropsType) => {
-    /*  let postsData = [
-          {id: 1,message: 'Hi, how are you?',  likesCount: 14},
-          {id: 2, message: 'It is my first post!!!', likesCount: 30},
-          {id: 3, message: 'It is my second post!!!', likesCount: 130},
-      ]*/
+
+  debugger
     let postsElements = props.posts.posts.map((p) => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>);
 let newPost=useRef<HTMLTextAreaElement>(null)
   let addPost=()=>{
     if (newPost.current!==null){
-         alert(newPost.current.value)
+         props.addPost(newPost.current.value)
     }
 
   }
