@@ -7,18 +7,19 @@ import {addPost, ProfilePageType, RootStateType} from "../../../redux/State";
 
 type MyPostsPropsType = {
    /* posts: Array<postsDataProps>*/
-    posts:ProfilePageType
+    newPosts:ProfilePageType
     addPost:(newMessage:string)=>void
 }
 
 export const MyPosts = (props: MyPostsPropsType) => {
 
-  debugger
-    let postsElements = props.posts.posts.map((p) => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>);
+
+    let postsElements = props.newPosts.posts.map((p) => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>);
 let newPost=useRef<HTMLTextAreaElement>(null)
   let addPost=()=>{
     if (newPost.current!==null){
          props.addPost(newPost.current.value)
+        newPost.current.value=''
     }
 
   }

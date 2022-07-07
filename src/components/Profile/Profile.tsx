@@ -15,7 +15,7 @@ export const Profile = (props: ProfilePropsType) => {
     return (
         <div className={s.content}>
             <ProfileInfo/>
-            <MyPosts posts={props.postPage} addPost={props.addPost}/>
+            <MyPosts newPosts={props.postPage} addPost={props.addPost}/>
         </div>
 
     );

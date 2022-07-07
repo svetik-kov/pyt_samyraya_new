@@ -1,3 +1,5 @@
+import {RenderTree} from "../render";
+
 type messagesType = {
     id: number
     message: string
@@ -55,12 +57,13 @@ let State:RootStateType = {
 }
 
 export  let addPost=(newMessage:string)=>{
-    debugger
+
     let newPost={
         id:4,
         message: newMessage,
         likesCount:0
     }
     State.ProfilePage.posts.push(newPost)
+    RenderTree(State)
 }
  export default State
