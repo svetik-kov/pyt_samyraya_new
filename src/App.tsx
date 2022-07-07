@@ -10,24 +10,9 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {RootStateType} from "./redux/State";
 
 type AppPropsType = {
-  /*  dialogs: Array<DialogsDataType>
-    messages:Array<MessageDataType>
-    posts: Array<postsDataProps>*/
     state:RootStateType
 }
-/*export type DialogsDataType = {
-    id: number,
-    name: string
-}
-export type MessageDataType = {
-    id: number,
-    message: string
-}
-export type postsDataProps = {
-    id: number
-    message: string
-    likesCount: number
-}*/
+
 const App = ( props:AppPropsType) => {
 
     return (
@@ -39,8 +24,8 @@ const App = ( props:AppPropsType) => {
                 <div className='app-wrapper-content'>
 
                     <Routes>
-                        <Route path="/dialogs/*" element={<Dialogs state={props.state}  />}/>
-                        <Route path="/profile/*" element={<Profile state={props.state}/>}/>
+                        <Route path="/dialogs/*" element={<Dialogs messagePage={props.state.MessagePage} profilePage={props.state.ProfilePage} />}/>
+                        <Route path="/profile/*" element={<Profile postPage={props.state.ProfilePage}/>}/>
                     </Routes>
                 </div>
 

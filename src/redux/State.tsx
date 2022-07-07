@@ -11,16 +11,14 @@ type postsType = {
     message: string
     likesCount: number
 }
-type ProfilePageType = {
+export type ProfilePageType = {
     posts: Array<postsType>
     dialogs: Array<dialogsType>
 }
-type MessagePage={
+export type MessagePage={
     messages:Array<messagesType>
 }
-type SidebarType={
-
-}
+type SidebarType={}
 export  type RootStateType={
     ProfilePage:ProfilePageType
     MessagePage:MessagePage

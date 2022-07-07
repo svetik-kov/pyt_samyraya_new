@@ -3,12 +3,13 @@ import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 /*import {DialogsDataType, MessageDataType} from "../../App";*/
-import {RootStateType} from "../../redux/State";
+import {MessagePage, ProfilePageType, RootStateType} from "../../redux/State";
 
 type DialogsPropsType = {
   /*  dialogs: Array<DialogsDataType>
     messages:Array<MessageDataType>*/
-    state:RootStateType
+    messagePage:MessagePage
+    profilePage:ProfilePageType
 }
 
 
@@ -33,8 +34,8 @@ export const Dialogs = (props:DialogsPropsType) => {
         {id: 4, message: 'Yo!'},
         {id: 5, message: 'Yo!'},
     ]*/
-    let dialogsElements= props.state.ProfilePage.dialogs.map((d)=>  <DialogItem key={d.id} name={d.name} id={d.id}/>);
-    let messageElements=props.state.MessagePage.messages.map(m=><Message key={m.id} message={m.message}/>)
+    let dialogsElements= props.profilePage.dialogs.map((d)=>  <DialogItem key={d.id} name={d.name} id={d.id}/>);
+    let messageElements=props.messagePage.messages.map(m=><Message key={m.id} message={m.message}/>)
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
