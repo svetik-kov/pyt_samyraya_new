@@ -1,4 +1,4 @@
-import {RenderTree} from "../render";
+let RenderTree=()=>{console.log('hello')}
 
 type messagesType = {
     id: number
@@ -16,6 +16,7 @@ type postsType = {
 export type ProfilePageType = {
     posts: Array<postsType>
     dialogs: Array<dialogsType>
+    newMessagePost:string
 }
 export type MessagePage={
     messages:Array<messagesType>
@@ -43,6 +44,7 @@ let State:RootStateType = {
             {id: 7, name: 'Marina'},
             {id: 8, name: 'Yulya'},
         ],
+        newMessagePost:''
     },
     MessagePage: {
         messages: [
@@ -56,14 +58,25 @@ let State:RootStateType = {
     Sidebar: {}
 }
 
-export  let addPost=(newMessage:string)=>{
+export  const addPost=(newMessage:string)=>{
 
     let newPost={
-        id:4,
+        id:new Date().getTime(),
         message: newMessage,
         likesCount:0
     }
     State.ProfilePage.posts.push(newPost)
-    RenderTree(State)
+    RenderTree()
 }
- export default State
+
+export  const changeNewText =(newText:string)=>{
+    debugger
+    State.ProfilePage.newMessagePost=newText
+    RenderTree()
+}
+export const subscribe=(callBack:()=>void)=>{
+    RenderTree=callBack
+}
+
+
+export default State
