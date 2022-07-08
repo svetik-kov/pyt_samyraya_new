@@ -31,8 +31,15 @@ export  type RootStateType = {
     Sidebar: SidebarType
 }
 
-
-export let store={
+export type storeType={
+    _State:RootStateType
+    _RenderTree: ()=>void
+    addPost: (newMessage: string)=>void
+    changeNewText :  (newText: string)=>void
+    subscribe : (callBack: () => void)=>void
+    getState:()=>RootStateType
+}
+export let store:storeType={
     _State: {
         ProfilePage: {
             posts: [
@@ -82,7 +89,7 @@ export let store={
         this._State.ProfilePage.newMessagePost = newText
         this._RenderTree()
     },
-    subscribe  (callBack: () => void)  {
+    subscribe  (callBack)  {
         this._RenderTree = callBack
     }
 }
