@@ -8,7 +8,7 @@ import {Profile} from "./components/Profile/Profile";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import s from "./components/Dialogs/Dialogs.module.css";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {addPost, changeNewText, RootStateType} from "./redux/State";
+import {/*addPost, changeNewText,*/ RootStateType} from "./redux/State";
 
 type AppPropsType = {
     state:RootStateType

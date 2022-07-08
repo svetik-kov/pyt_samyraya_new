@@ -1,4 +1,4 @@
-import State, {addPost, changeNewText, RootStateType, subscribe} from "./redux/State";
+import State, {store} from "./redux/State";
 import {createRoot} from "react-dom/client";
 import React from "react";
 import App from "./App";
@@ -12,7 +12,7 @@ export const RenderTree = () => {
 
     root.render(
         <React.StrictMode>
-            <App state={State} addPost={addPost} changeNewText={changeNewText}/>
+            <App state={store.getState()} addPost={store.addPost.bind(store)} changeNewText={store.changeNewText.bind(store)}/>
         </React.StrictMode>
     );
 
@@ -23,4 +23,4 @@ export const RenderTree = () => {
 }
 
 RenderTree()
-subscribe(RenderTree)
+store.subscribe(RenderTree)

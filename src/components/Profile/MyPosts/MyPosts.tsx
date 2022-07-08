@@ -3,7 +3,7 @@ import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
 import {findAllByDisplayValue} from "@testing-library/react";
 /*import {postsDataProps} from "../../../App";*/
-import {addPost, ProfilePageType, RootStateType} from "../../../redux/State";
+import { ProfilePageType, RootStateType} from "../../../redux/State";
 
 type MyPostsPropsType = {
     /* posts: Array<postsDataProps>*/
