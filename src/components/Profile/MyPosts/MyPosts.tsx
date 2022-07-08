@@ -3,14 +3,14 @@ import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
 import {findAllByDisplayValue} from "@testing-library/react";
 /*import {postsDataProps} from "../../../App";*/
-import { ProfilePageType, RootStateType} from "../../../redux/State";
+import {ActionType, ProfilePageType, RootStateType} from "../../../redux/State";
 
 type MyPostsPropsType = {
     /* posts: Array<postsDataProps>*/
     newPosts: ProfilePageType
-    addPost: (newMessage: string) => void
+    dispatch:(action:ActionType)=>void
     message: string
-    changeNewText: (newText: string) => void
+
 }
 
 export const MyPosts = (props: MyPostsPropsType) => {
@@ -20,13 +20,13 @@ export const MyPosts = (props: MyPostsPropsType) => {
                                                               likesCount={p.likesCount}/>);
     /*let newPost=useRef<HTMLTextAreaElement>(null)*/
     let addPost = () => {
-        props.addPost(props.message)
-        props.changeNewText('')
+        props. dispatch({type:'ADD-POST',newMessage:props.message})
+        props.dispatch({type:'CHANGE-NEW-TEXT', newText:''})
 
     }
     const onchangeHandler = (e: any) => {
         debugger
-        props.changeNewText(e.currentTarget.value)
+        props.dispatch({type:'CHANGE-NEW-TEXT', newText:e.currentTarget.value})
     }
 
     return (

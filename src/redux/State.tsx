@@ -38,7 +38,17 @@ export type storeType={
     changeNewText :  (newText: string)=>void
     subscribe : (callBack: () => void)=>void
     getState:()=>RootStateType
+    dispatch:(action:ActionType)=>void
 }
+type addPostActionType={
+    type:'ADD-POST'
+    newMessage:string
+}
+type changeNewTextActionType= {
+    type: 'CHANGE-NEW-TEXT'
+    newText: string
+}
+export type ActionType=addPostActionType|changeNewTextActionType
 export let store:storeType={
     _State: {
         ProfilePage: {
@@ -70,7 +80,6 @@ export let store:storeType={
         },
         Sidebar: {}
     },
-    getState(){return this._State},
     _RenderTree ()  {
         console.log('hello')
     },
@@ -85,12 +94,27 @@ export let store:storeType={
         this._RenderTree()
     },
     changeNewText   (newText: string)   {
-        debugger
+
         this._State.ProfilePage.newMessagePost = newText
         this._RenderTree()
     },
     subscribe  (callBack)  {
         this._RenderTree = callBack
+    },
+    getState(){return this._State},
+    dispatch(action) {
+      if (action.type==='ADD-POST') {
+          let newPost = {
+              id: new Date().getTime(),
+              message: action.newMessage,
+              likesCount: 0
+          }
+          this._State.ProfilePage.posts.push(newPost)
+          this._RenderTree()
+      }  else if (action.type==='CHANGE-NEW-TEXT')  {
+            this._State.ProfilePage.newMessagePost =action.newText
+            this._RenderTree()
+        }
     }
 }
 
